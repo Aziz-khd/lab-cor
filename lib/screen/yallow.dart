@@ -6,24 +6,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:app/screen/login.dart';
 
-class blue extends StatefulWidget {
-  const blue({super.key});
+class y extends StatefulWidget {
+  const y({super.key});
 
   @override
-  State<blue> createState() => _blueState();
+  State<y> createState() => _yState();
 }
 
-class _blueState extends State<blue> {
+class _yState extends State<y> {
   String? role;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 120, 177, 224),
+      backgroundColor: Colors.blue,
       appBar: AppBar(
-        //title: Text("Radio Button in Flutter"),
-        backgroundColor: Color.fromARGB(255, 9, 44, 73),
-      ),
+          //title: Text("Radio Button in Flutter"),
+
+          ),
       body: Container(
         padding: EdgeInsets.all(20),
         child: Column(

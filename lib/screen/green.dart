@@ -21,11 +21,11 @@ class _greenState extends State<green> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: Color.fromARGB(255, 161, 224, 163),
       appBar: AppBar(
-          //title: Text("Radio Button in Flutter"),
-
-          ),
+        //title: Text("Radio Button in Flutter"),
+        backgroundColor: Color.fromARGB(255, 12, 86, 15),
+      ),
       body: Container(
         padding: EdgeInsets.all(20),
         child: Column(

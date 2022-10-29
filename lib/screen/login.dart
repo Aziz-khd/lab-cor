@@ -1,7 +1,9 @@
 import 'package:app/screen/blue.dart';
 import 'package:app/screen/green.dart';
 import 'package:app/screen/home.dart';
+import 'package:app/screen/red.dart';
 import 'package:app/screen/siginup.dart';
+import 'package:app/screen/yallow.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
@@ -19,27 +21,29 @@ class _Log_inState extends State<Log_in> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+        ),
         body: Padding(
             padding: const EdgeInsets.all(10),
             child: ListView(
               children: <Widget>[
                 Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.all(10),
-                    child: const Text(
-                      'LTUC',
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 30),
-                    )),
+                  height: 90,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: NetworkImage(
+                              "https://cdn.iconscout.com/icon/free/png-256/flutter-3629959-3031431.png"))),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
                 Container(
                     alignment: Alignment.center,
                     padding: const EdgeInsets.all(10),
                     child: const Text(
-                      'Sign IN',
-                      style: TextStyle(fontSize: 20),
+                      'Sign in',
+                      style: TextStyle(fontSize: 20, color: Colors.grey),
                     )),
                 Container(
                   padding: const EdgeInsets.all(10),
@@ -62,19 +66,15 @@ class _Log_inState extends State<Log_in> {
                     ),
                   ),
                 ),
-                TextButton(
-                  onPressed: () {
-                    //forgot password screen
-                  },
-                  child: const Text(
-                    'Forgot Password',
-                  ),
-                ),
+                SizedBox(height: 30),
                 Container(
                     height: 50,
                     padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                     child: ElevatedButton(
-                      child: const Text('Get ME to my Account'),
+                      style: ElevatedButton.styleFrom(
+                        primary: Color.fromARGB(255, 208, 79, 255),
+                      ),
+                      child: const Text('Login'),
                       onPressed: () async {
                         try {
                           FirebaseAuth myauthobject = FirebaseAuth.instance;
@@ -84,23 +84,30 @@ class _Log_inState extends State<Log_in> {
                                   password: passwordController.text);
 
                           setState(() {
-                            if (nameController == "blue@gmail.com") {
+                            if (nameController.text == "blue@gmail.com") {
                               Navigator.push(context, MaterialPageRoute(
                                 builder: (context) {
                                   return blue();
                                 },
                               ));
-                            } else if (nameController == "green@gmail.com") {
+                            } else if (nameController.text ==
+                                "green@gmail.com") {
                               Navigator.push(context, MaterialPageRoute(
                                 builder: (context) {
                                   return green();
                                 },
                               ));
-                            } else {
-                              nameController == "red@gmail.com";
+                            } else if (nameController.text == "red@gmail.com") {
                               Navigator.push(context, MaterialPageRoute(
                                 builder: (context) {
-                                  return green();
+                                  return red();
+                                },
+                              ));
+                            } else {
+                              nameController.text == "yallow@gmail.com";
+                              Navigator.push(context, MaterialPageRoute(
+                                builder: (context) {
+                                  return y();
                                 },
                               ));
                             }
@@ -115,13 +122,20 @@ class _Log_inState extends State<Log_in> {
                         }
                       },
                     )),
+                SizedBox(
+                  height: 10,
+                ),
                 Row(
                   children: <Widget>[
                     const Text("Dosen't have an account ?"),
                     TextButton(
                       child: const Text(
-                        'Sign UP',
-                        style: TextStyle(fontSize: 20),
+                        'Sign up',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          decoration: TextDecoration.underline,
+                          fontSize: 18,
+                        ),
                       ),
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(
